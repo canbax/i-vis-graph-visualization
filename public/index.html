@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/cytoscape-context-menus.css">
+  <title>i-Vis exercise</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              connect to a Neo4j database 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-item">
+                <div>
+                  <div class="form-group">
+                    <label for="dbURI">database URI</label>
+                    <input type="url" class="form-control" id="dbURI" value="bolt://localhost" placeholder="leave blank for localhost">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="userName1">Username</label>
+                    <input type="text" class="form-control" id="userName1" aria-describedby="emailHelp" value="neo4j" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" placeholder="Password" value="123">
+                  </div>
+                  
+                  <button type="button" class="btn btn-primary" onclick="connect2Db()" >Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" id="inp0" type="search" placeholder="actor name" value="Keanu Reeves" aria-label="Search">
+        <input class="form-control mr-sm-2" id="inp1" min="0" type="number" placeholder="Actor Number" value="1" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="submitbtn" onclick="getPersonCenteredGraph()" disabled>Show</button>
+      </form>
+    </div>
+  </nav>
+
+  <div id="cy" style="width: 600px;height: 600px;display: block;">
+
+  </div>
+  
+  <!-- Modal to show notifications -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="./js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="./js/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="./js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  
+  <script src="./js/cytoscape.umd.js"></script>
+  <script src="./js/neo4j-driver.js"></script>
+  <!-- <script src="./js/cose-bilkent-bundle.js"></script> -->
+  <script src="./js/cytoscape-cose-bilkent.js"></script>
+  <script src="./js/cytoscape-context-menus.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>
