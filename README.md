@@ -9,7 +9,7 @@ To show context menu buttons: cytoscape-context-menus
 To connect to neo4j database: neo4j-driver
 
 prerequisites
-- nodejs, npm, neo4j database must be installed or must be available to connect
+- nodejs, npm, a neo4j database must be installed or must be available to connect, the neo4j database must have APOC plugin. To fetch data it uses this plugin.
 
 install instructions
 1- clone project from github
@@ -22,7 +22,7 @@ npm install
 node server.js
 
 User manual
-First you should connect to a neo4j database. Connect with button up left
+First you should connect to a neo4j database (this database must have APOC plugin installed). Connect with button up left
 Than you should enter an actor name exaclty as it is like 'Tom Cruise', 'Keanu Reeves', 'Al Pacino'
 you can view subgraph by entering an actor number
 you can add nodes to subgraph using right-click>show actors of movie/show movies of person
