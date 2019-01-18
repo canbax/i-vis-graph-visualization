@@ -1,7 +1,7 @@
 // yusuf sait canbaz
 // 18 Jan 2019
 
-// define global variables here
+// global variables
 window.neo4jdriver = null;
 window.cy = null;
 
@@ -64,25 +64,23 @@ function connect2Db() {
   window.neo4jdriver = neo4j.v1.driver(dbURI, neo4j.v1.auth.basic(usrName, pwd));
   var session = window.neo4jdriver.session();
 
-  session.run('MATCH (r) RETURN r LIMIT 1')
-    .then(function (result) {
-      $("#submitbtn").prop("disabled", false);
-      notify('connection succesful', 'connected');
-      session.close();
-    })
-    .catch(function (error) {
-      notify('connection error', error);
-      console.log(error);
-    });
+  neo4jSessionRunner('MATCH (r) RETURN r LIMIT 1', false, false, function(){
+    $("#submitbtn").prop("disabled", false);
+    notify('connection succesful', 'connected');
+  });
 }
 
-function neo4jSessionRunner(cypherQuery, isRedraw, randomizeLayout){
+function neo4jSessionRunner(cypherQuery, isRedraw, randomizeLayout, callback){
   var session = window.neo4jdriver.session();
 
   session.run(cypherQuery)
   .then(function (result) {
-    parseNeo4jData(result, isRedraw);
-    layoutCy(randomizeLayout);
+    if (callback){
+      callback();
+    }else{
+      parseNeo4jData(result, isRedraw);
+      layoutCy(randomizeLayout);
+    }
     session.close();
   })
   .catch(function (error) {
